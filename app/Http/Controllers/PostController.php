@@ -14,4 +14,18 @@ class PostController extends Controller
         // dd($posts);
         return view('admin/posts/index', compact('posts'));
     }
+    public function create()
+    {
+        return view('admin/posts/create');
+    }
+    public function store(Request $request)
+    {
+        // Post::create([
+        //     'title' => $request->title,
+        //     'content' => $request->content
+        // ]);
+
+       Post::create($request->all());
+            return redirect()->route('posts.index');
+    }
 }
