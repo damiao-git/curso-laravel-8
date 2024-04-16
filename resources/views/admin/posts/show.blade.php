@@ -837,41 +837,24 @@
 </head>
 
 <body class="antialiased">
-
-    @if (session('message'))
-        <div>{{session('message')}}</div>
-    @endif
-    <h1>Posts</h1>
-    <button><a href="{{ route('posts.create') }}">Novo Post</a></button>
-    <table>
-        <tbody>
-            <tr>
-                <th>&nbsp;ID</th>
-                <th>&nbsp;Post</th>
-                <th>&nbsp;Content</th>
-                <th>&nbsp;Details</th>
-            </tr>
-            <tr>
-                @foreach ($posts as $post)
-            <tr>
-                <td>
-                    <p>{{ $post->id }}</p>
-                </td>
-                <td>
-                    <p>{{ $post->title }}</p>
-                </td>
-                <td>
-                    <p>{{ $post->content }}</p>
-                </td>
-                <td>
-                    <p><a href="{{route('posts.show', $post->id)}}">Ver</a></p>
-                </td>
-            </tr>
-            @endforeach
-            </tr>
-        </tbody>
-    </table>
-
+    <h1>Details</h1>
+    <div>
+        <label>Id:</label>
+        <input type="text" name="id" id="id" value="{{ $post->id }}" disabled>
+        <br>
+        <label>Title:</label>
+        <input type="text" name="id" id="id" value="{{ $post->title }}">
+        <br>
+        <label>Content:</label>
+        <input type="text" name="id" id="id" value="{{ $post->content }}">
+    </div>
+    <div>
+        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">Deletar Post: {{$post->title}}</button>
+        </form>
+    </div>
 </body>
 
 </html>
