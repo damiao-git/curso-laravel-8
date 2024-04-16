@@ -71,4 +71,13 @@ class PostController extends Controller
             ->route('posts.index')
             ->with('message', 'Registro atualizado com sucesso!');
     }
+    public function search(Request $request)
+    {
+        $filters = $request->all();
+
+        $posts = Post::where('title', 'LIKE', "%{$request->search}%")
+                        ->orWhere('content', 'LIKE', "%{$request->search}%")
+                        ->paginate(2);
+        return view('admin.posts.index', compact('posts', 'filters'));
+    }
 }

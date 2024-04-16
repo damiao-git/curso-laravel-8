@@ -839,8 +839,15 @@
 <body class="antialiased">
 
     @if (session('message'))
-        <div>{{session('message')}}</div>
+        <div>{{ session('message') }}</div>
     @endif
+
+    <form action="{{ route('posts.search') }}" method="post">
+        @csrf
+        <input type="text" name="search" placeholder="Filtrar">
+        <button type="submit">Filtrar</button>
+    </form>
+
     <h1>Posts</h1>
     <button><a href="{{ route('posts.create') }}">Novo Post</a></button>
     <table>
@@ -864,18 +871,21 @@
                     <p>{{ $post->content }}</p>
                 </td>
                 <td>
-                    <p><a href="{{route('posts.show', $post->id)}}">Ver</a></p>
+                    <p><a href="{{ route('posts.show', $post->id) }}">Ver</a></p>
                 </td>
                 <td>
-                    <p><a href="{{route('posts.edit', $post->id)}}">Editar</a></p>
+                    <p><a href="{{ route('posts.edit', $post->id) }}">Editar</a></p>
                 </td>
             </tr>
             @endforeach
             </tr>
         </tbody>
     </table>
-
-    {{ $posts->links() }}
+    @if (isset($filters))
+        {{ $posts->appends($filters)->links() }}
+    @else
+        {{ $posts->links() }}
+    @endif
 
 </body>
 
