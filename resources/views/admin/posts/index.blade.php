@@ -838,7 +838,7 @@
 
 <body class="antialiased">
     <h1>Posts</h1>
-    <button><a href="{{ route('posts.create')}}">Novo Post</a></button>
+    <button><a href="{{ route('posts.create') }}">Novo Post</a></button>
     <table>
         <tbody>
             <tr>
@@ -848,18 +848,18 @@
             </tr>
             <tr>
                 @foreach ($posts as $post)
-                <tr>
-                    <td>
-                        <p>{{ $post->id }}</p>
-                    </td>
-                    <td>
-                        <p>{{ $post->title }}</p>
-                    </td>
-                    <td>
-                        <p>{{ $post->content }}</p>
-                    </td>
-                </tr>
-                @endforeach
+            <tr>
+                <td>
+                    <p>{{ $post->id }}</p>
+                </td>
+                <td>
+                    <p>{{ $post->title }}</p>
+                </td>
+                <td>
+                    <p>{{ $post->content }}</p>
+                </td>
+            </tr>
+            @endforeach
             </tr>
         </tbody>
     </table>
