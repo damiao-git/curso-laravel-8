@@ -8,5 +8,5 @@
     @include('admin.posts._partials.form')
 </form>
 
-<button><a href="{{ url()->previous() }}">Voltar</a></button>
+<a href="{{ url()->previous() }} "class="btn btn-primary ">Voltar</a>
 @endsection

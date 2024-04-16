@@ -17,10 +17,10 @@
         <form action="{{ route('posts.destroy', $post->id) }}" method="post">
             @csrf
             <input type="hidden" name="_method" value="delete">
-            <button type="submit">Deletar Post: {{$post->title}}</button>
+            <button type="submit" class="btn btn-danger">Deletar Post: {{$post->title}}</button>
         </form>
 
-        <button><a href="{{ url()->previous() }}">Voltar</a></button>
+        <a href="{{ url()->previous() }} "class="btn btn-primary ">Voltar</a>
     </div>
     @endsection
 

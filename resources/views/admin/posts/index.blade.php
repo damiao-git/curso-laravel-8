@@ -4,7 +4,7 @@
 
 @section('content')
     @if (session('message'))
-        <div>{{ session('message') }}</div>
+        <div class="text-danger">{{ session('message') }}</div>
     @endif
 
     <form action="{{ route('posts.search') }}" method="post">
@@ -14,8 +14,10 @@
     </form>
 
     <h1>Posts</h1>
-    <button><a href="{{ route('posts.create') }}">Novo Post</a></button>
-    <table>
+    <a href="{{ route('posts.create') }}" class="btn btn-success">Novo Post</a>
+    <br>
+    <br>
+    <table class="table table-striped border-success text-center ">
         <tbody>
             <tr>
                 <th>&nbsp;ID</th>
@@ -36,10 +38,10 @@
                     <p>{{ $post->content }}</p>
                 </td>
                 <td>
-                    <p><a href="{{ route('posts.show', $post->id) }}">Ver</a></p>
+                    <p><a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Ver</a></p>
                 </td>
                 <td>
-                    <p><a href="{{ route('posts.edit', $post->id) }}">Editar</a></p>
+                    <p><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Editar</a></p>
                 </td>
             </tr>
             @endforeach
