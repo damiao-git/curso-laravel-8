@@ -875,6 +875,8 @@
         </tbody>
     </table>
 
+    {{ $posts->links() }}
+
 </body>
 
 </html>
