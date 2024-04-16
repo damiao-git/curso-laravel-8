@@ -27,7 +27,7 @@ class PostController extends Controller
         // ]);
 
         Post::create($request->all());
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('message', 'Registro editado com sucesso!');
     }
     public function show($id)
     {
@@ -46,7 +46,29 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()
-        ->route('posts.index')
-        ->with('message', 'Registro deletado com sucesso!');
+            ->route('posts.index')
+            ->with('message', 'Registro deletado com sucesso!');
+    }
+
+    public function edit($id)
+    {
+        $post = Post::where('id', $id)->first();
+        if (!$post) {
+            return redirect()->back();
+        }
+        return view('admin.posts.edit', compact('post'));
+    }
+
+    public function update(StoreUpdatePost $request, $id)
+    {
+        $post = Post::where('id', $id)->first();
+        if (!$post) {
+            return redirect()->back();
+        }
+        $post->update($request->all());
+
+        return redirect()
+            ->route('posts.index')
+            ->with('message', 'Registro atualizado com sucesso!');
     }
 }

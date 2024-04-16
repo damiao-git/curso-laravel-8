@@ -848,8 +848,8 @@
             <tr>
                 <th>&nbsp;ID</th>
                 <th>&nbsp;Post</th>
-                <th>&nbsp;Content</th>
-                <th>&nbsp;Details</th>
+                <th>&nbsp;Conteúdo</th>
+                <th colspan="2">&nbsp;Detalhes</th>
             </tr>
             <tr>
                 @foreach ($posts as $post)
@@ -865,6 +865,9 @@
                 </td>
                 <td>
                     <p><a href="{{route('posts.show', $post->id)}}">Ver</a></p>
+                </td>
+                <td>
+                    <p><a href="{{route('posts.edit', $post->id)}}">Editar</a></p>
                 </td>
             </tr>
             @endforeach
